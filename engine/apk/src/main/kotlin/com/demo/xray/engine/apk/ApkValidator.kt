@@ -133,8 +133,8 @@ internal fun normalizeEntryName(name: String): String = name.replace('\\', '/')
 
 internal fun isSafeEntryName(name: String): Boolean {
     if (name.isEmpty()) return false
-    if (name.startsWith("/")) return false
     val normalized = normalizeEntryName(name)
+    if (normalized.startsWith("/")) return false
     val segments = normalized.split("/")
     return segments.none { it == ".." }
 }
