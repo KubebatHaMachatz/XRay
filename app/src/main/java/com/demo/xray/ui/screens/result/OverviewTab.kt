@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -22,7 +21,7 @@ import java.text.DateFormat
 import java.util.Date
 
 @Composable
-internal fun OverviewTab(result: AnalysisResult, modifier: Modifier, onNewAnalysis: () -> Unit) {
+internal fun OverviewTab(result: AnalysisResult, modifier: Modifier) {
     val manifest = result.facts.manifest
     val rows =
         buildList {
@@ -59,11 +58,6 @@ internal fun OverviewTab(result: AnalysisResult, modifier: Modifier, onNewAnalys
                     Text(label, style = MaterialTheme.typography.labelMedium)
                     Text(value, style = MaterialTheme.typography.bodyMedium, fontFamily = if (label == "SHA-256") FontFamily.Monospace else FontFamily.Default)
                 }
-            }
-        }
-        item {
-            Button(onClick = onNewAnalysis, modifier = Modifier.padding(top = 16.dp)) {
-                Text("Analyze another APK")
             }
         }
     }

@@ -1,7 +1,9 @@
 package com.demo.xray.ui.screens.result
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.Description
 import androidx.compose.material.icons.filled.Info
@@ -9,6 +11,7 @@ import androidx.compose.material.icons.filled.VpnKey
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
@@ -35,9 +38,18 @@ private enum class ResultTab(val label: String) {
 fun ResultScreen(result: AnalysisResult, onNewAnalysis: () -> Unit) {
     var selectedTab by remember { mutableStateOf(ResultTab.OVERVIEW) }
 
+    BackHandler(onBack = onNewAnalysis)
+
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(result.facts.manifest.packageName ?: "Analysis result") })
+            TopAppBar(
+                title = { Text(result.facts.manifest.packageName ?: "Analysis result") },
+                navigationIcon = {
+                    IconButton(onClick = onNewAnalysis) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                    }
+                },
+            )
         },
         bottomBar = {
             NavigationBar {
@@ -76,7 +88,7 @@ fun ResultScreen(result: AnalysisResult, onNewAnalysis: () -> Unit) {
     ) { padding ->
         val content = Modifier.padding(padding)
         when (selectedTab) {
-            ResultTab.OVERVIEW -> OverviewTab(result, content, onNewAnalysis)
+            ResultTab.OVERVIEW -> OverviewTab(result, content)
             ResultTab.FINDINGS -> FindingsTab(result, content)
             ResultTab.MANIFEST -> ManifestTab(result, content)
             ResultTab.PERMISSIONS -> PermissionsTab(result, content)
