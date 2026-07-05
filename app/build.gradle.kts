@@ -29,23 +29,35 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
-        create("release") {
-            storeFile = file(localProperties.getProperty("XRAY_STORE_FILE").trim())
-            storePassword = localProperties.getProperty("XRAY_STORE_PASSWORD").trim()
-            keyAlias = localProperties.getProperty("XRAY_KEY_ALIAS").trim()
-            keyPassword = localProperties.getProperty("XRAY_KEY_PASSWORD").trim()
-        }
-    }
+signingConfigs {
+    val storeFilePath = localProperties.getProperty("XRAY_STORE_FILE")?.trim()
+    val storePasswordValue = localProperties.getProperty("XRAY_STORE_PASSWORD")?.trim()
+    val keyAliasValue = localProperties.getProperty("XRAY_KEY_ALIAS")?.trim()
+    val keyPasswordValue = localProperties.getProperty("XRAY_KEY_PASSWORD")?.trim()
 
-    buildTypes {
-        release {
-            signingConfig = signingConfigs.getByName("release")
-            optimization {
-                enable = false
-            }
+    if (!storeFilePath.isNullOrBlank() &&
+        !storePasswordValue.isNullOrBlank() &&
+        !keyAliasValue.isNullOrBlank() &&
+        !keyPasswordValue.isNullOrBlank()
+    ) {
+        create("release") {
+            storeFile = file(storeFilePath)
+            storePassword = storePasswordValue
+            keyAlias = keyAliasValue
+            keyPassword = keyPasswordValue
         }
     }
+}
+
+buildTypes {
+    release {
+        // Allows assembleDebug/other tasks to run without local signing credentials.
+        signingConfig = signingConfigs.findByName("release")
+        optimization {
+            enable = false
+        }
+    }
+}
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_21
         targetCompatibility = JavaVersion.VERSION_21
