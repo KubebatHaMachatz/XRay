@@ -109,7 +109,7 @@ class DefaultApkValidator : ApkValidator {
                     .keys
                     .toList()
 
-            val expansionRatio = if (totalCompressed == 0L) 0L else totalUncompressed / totalCompressed
+            val expansionRatio = if (totalCompressed == 0L) 0L else (totalUncompressed + totalCompressed - 1) / totalCompressed
             val expansionExceedsPolicy = expansionRatio > AnalysisLimits.MAX_ZIP_EXPANSION_RATIO
 
             AnalysisOutcome.Success(
