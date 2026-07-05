@@ -31,8 +31,7 @@ private fun stageLabel(stage: com.demo.xray.core.model.AnalysisJobState): String
         com.demo.xray.core.model.AnalysisJobState.EVALUATING_RULES -> "Evaluating findings"
         com.demo.xray.core.model.AnalysisJobState.PERSISTING_RESULTS -> "Saving results"
         com.demo.xray.core.model.AnalysisJobState.COMPLETED,
-        com.demo.xray.core.model.AnalysisJobState.COMPLETED_WITH_WARNINGS,
-        -> "Complete"
+        com.demo.xray.core.model.AnalysisJobState.COMPLETED_WITH_WARNINGS -> "Complete"
         com.demo.xray.core.model.AnalysisJobState.CANCELLED -> "Cancelled"
         com.demo.xray.core.model.AnalysisJobState.FAILED -> "Failed"
     }
