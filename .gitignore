@@ -1,0 +1,64 @@
+# Adapted from https://www.gitignore.io/api/java,android,intellij,androidstudio
+
+### Build outputs ###
+*.apk
+*.ap_
+*.aab
+*.dex
+*.class
+build/
+out/
+bin/
+gen/
+.cxx/
+.externalNativeBuild/
+captures/
+
+### Gradle ###
+.gradle/
+gradle-app.setting
+!gradle/wrapper/gradle-wrapper.jar
+
+### Local configuration (SDK path, signing, secrets) ###
+local.properties
+
+### Signing / keystores ###
+*.jks
+*.keystore
+
+### Logs ###
+*.log
+hs_err_pid*
+
+### JetBrains / Android Studio ###
+*.iml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/libraries
+.idea/caches/
+.idea/shelf/
+.idea/mongoSettings.xml
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+.idea/**/contentModel.xml
+.idea/httpRequests
+.idea/replstate.xml
+.idea/sonarlint
+
+### OS files ###
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
