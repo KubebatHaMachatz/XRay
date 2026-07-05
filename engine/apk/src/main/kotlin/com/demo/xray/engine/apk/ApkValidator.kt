@@ -146,7 +146,7 @@ internal fun isSafeEntryName(name: String): Boolean {
 internal fun categorize(path: String): ArchiveEntryCategory =
     when {
         path == ANDROID_MANIFEST_ENTRY_NAME -> ArchiveEntryCategory.COMPILED_MANIFEST
-        path.matches(Regex("classes\\d*\\.dex")) -> ArchiveEntryCategory.DEX
+        isDexEntryName(path) -> ArchiveEntryCategory.DEX
         path.startsWith("lib/") -> ArchiveEntryCategory.NATIVE_LIBRARY
         path.startsWith("assets/") -> ArchiveEntryCategory.ASSETS
         path.startsWith("META-INF/") &&
