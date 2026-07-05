@@ -28,14 +28,12 @@ import com.demo.xray.engine.rules.FindingsEngine
  *  val pipeline = container.analysisPipeline
  *  ```
  *
- * **For tests**: Create a test version of this class with mock implementations:
+ * **For tests**: instantiate [AnalysisPipeline] directly with fake dependencies, or wrap it in a small test container:
  *  ```
- *  class TestAppContainer : AppContainer() {
- *      override val analysisPipeline = AnalysisPipeline(
- *          importer = FakeApkImporter(),
- *          // ...
- *      )
- *  }
+ *  val pipeline = AnalysisPipeline(
+ *      importer = FakeApkImporter(),
+ *      // ...
+ *  )
  *  ```
  */
 class AppContainer {
