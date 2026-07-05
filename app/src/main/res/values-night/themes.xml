@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Window/launch theme only; actual UI theming is done in Compose via MaterialTheme. -->
     <style name="Theme.XRay" parent="android:Theme.Material.NoActionBar">
         <item name="android:statusBarColor">@color/app_background_dark</item>
