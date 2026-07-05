@@ -21,14 +21,14 @@ class DefaultFindingsEngine : FindingsEngine {
                         category = rule.metadata.category,
                         severity = result.severityOverride ?: rule.metadata.defaultSeverity,
                         confidence = result.confidence,
-explanation =
-    buildString {
-        append(rule.metadata.title)
-        if (result.evidence.isNotEmpty()) {
-            append(": ")
-            append(result.evidence.joinToString("; "))
-        }
-    },
+                        explanation =
+                            buildString {
+                                append(rule.metadata.title)
+                                if (result.evidence.isNotEmpty()) {
+                                    append(": ")
+                                    append(result.evidence.joinToString("; "))
+                                }
+                            },
                         evidence = result.evidence,
                         affected = result.affected,
                         remediation = rule.metadata.remediation,
