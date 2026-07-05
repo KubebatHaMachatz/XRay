@@ -126,7 +126,11 @@ class DefaultApkValidator : ApkValidator {
     }
 }
 
-private fun isDexEntryName(name: String): Boolean = name.matches(Regex("classes\\d*\\.dex"))
+private fun isDexEntryName(name: String): Boolean {
+    if (!name.startsWith("classes") || !name.endsWith(".dex")) return false
+    val n = name.removePrefix("classes").removeSuffix(".dex")
+    return n.isEmpty() || n.all { it.isDigit() }
+}
 
 /** Normalizes separators; never used to build a filesystem path, only for comparison/display. */
 internal fun normalizeEntryName(name: String): String = name.replace('\\', '/')
