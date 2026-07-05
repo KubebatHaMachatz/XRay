@@ -78,7 +78,7 @@ class AnalysisPipeline(
         onProgress: (AnalysisProgress) -> Unit = {},
     ): AnalysisOutcome<AnalysisResult> {
         val startElapsed = clock.elapsedRealtimeMs()
-        val destFile = File(privateStorageDir, "xray-import-${UUID.randomUUID()}.apk")
+        val destFile = File(privateStorageDir, "${com.demo.xray.XRayApplication.TEMP_IMPORT_PREFIX}${UUID.randomUUID()}.apk")
 
         /**
          * Helper to fire a progress update with elapsed time.
