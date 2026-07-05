@@ -162,7 +162,7 @@ class AnalysisPipeline(
             // ========== STAGE 4: CROSS-CHECK (optional) ==========
             // Query PackageManager for app label and icon (if the APK is installed on device).
             // Swallows errors (e.g., if PackageManager throws) to avoid failing the entire analysis.
-            progress(AnalysisJobState.EVALUATING_RULES, null, "Cross-checking package metadata")
+            progress(AnalysisJobState.CROSS_CHECKING_PACKAGE_MANAGER, null, "Cross-checking package metadata")
             val crossCheckFact = crossCheck?.let { runCatching { it(destFile) }.getOrNull() }
 
             // Assemble all facts (manifest, archive inventory, cross-check result).

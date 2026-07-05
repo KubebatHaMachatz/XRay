@@ -27,6 +27,7 @@ private fun stageLabel(stage: com.demo.xray.core.model.AnalysisJobState): String
         com.demo.xray.core.model.AnalysisJobState.ANALYZING_SIGNATURE -> "Inspecting signature"
         com.demo.xray.core.model.AnalysisJobState.ANALYZING_DEX -> "Analyzing DEX"
         com.demo.xray.core.model.AnalysisJobState.DETECTING_SDKS -> "Detecting SDKs"
+        com.demo.xray.core.model.AnalysisJobState.CROSS_CHECKING_PACKAGE_MANAGER -> "Cross-checking package metadata"
         com.demo.xray.core.model.AnalysisJobState.EVALUATING_RULES -> "Evaluating findings"
         com.demo.xray.core.model.AnalysisJobState.PERSISTING_RESULTS -> "Saving results"
         com.demo.xray.core.model.AnalysisJobState.COMPLETED,
