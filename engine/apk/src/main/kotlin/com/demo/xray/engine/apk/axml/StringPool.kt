@@ -110,7 +110,7 @@ internal class StringPool(
             )
         }
 
-        private const val MAX_STRING_COUNT = 5_000_000
-        private const val MIN_HEADER_SIZE = 28
+private const val MAX_STRING_COUNT = 200_000
+private const val MIN_HEADER_SIZE = 28
     }
 }
